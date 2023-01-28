@@ -7,13 +7,13 @@ A simple e commerce project challenge.
 npm i && npm start
 
 ### Tech Stacks
-React
-React Router Dom
-API
-MaterialUI
-HTML
-JavaScript
-CSS
+ - React
+ - React Router Dom
+ - API
+ - MaterialUI
+ - HTML
+ - JavaScript
+ - CSS
 
 ### Functionalities
 Product Page with searching and filtering options
