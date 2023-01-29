@@ -28,7 +28,8 @@ npm i && npm start
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/69464544/215254758-499850e7-cd84-4be1-bedf-02537ffb11ae.png">
 
 ### `Product Page (Responsive)`
-<img width="653" alt="image" src="https://user-images.githubusercontent.com/69464544/215255314-f4e78844-abbf-4897-980b-88bd88c37e7a.png">
+<img width="655" alt="image" src="https://user-images.githubusercontent.com/69464544/215309833-fc29d40a-a67c-42a0-876d-e97739db8c21.png">
+
 
 ### `Cart Page`
 <img width="960" alt="image" src="https://user-images.githubusercontent.com/69464544/215254935-198bc1ed-58bf-44aa-bc4a-11cb12c54c0b.png">
