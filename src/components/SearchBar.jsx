@@ -48,7 +48,7 @@ const SearchBar = ({ setQuery, selected, handleChecked, checkedMap }) => {
             lg: 800,
             md: 600,
             sm: 400,
-            xs: 200,
+            xs: 300,
           },
           ml: 3,
         }}
@@ -62,7 +62,14 @@ const SearchBar = ({ setQuery, selected, handleChecked, checkedMap }) => {
         <FilterAltIcon />
       </Filtercustom>
       <Drawer anchor="right" open={isDrawerOpen} onClose={toggleDrawer}>
-        <Box p={2} width="20vh">
+        <Box
+          p={2}
+          width="12vh"
+          height="100vh"
+          sx={{
+            mt: 10,
+          }}
+        >
           <FormControl component="fieldset" variant="standard">
             <FormLabel component="legend" sx={{ fontSize: 15, mt: 1 }}>
               Color
@@ -109,17 +116,17 @@ const SearchBar = ({ setQuery, selected, handleChecked, checkedMap }) => {
             </FormLabel>
             <FormGroup>
               <Filter
-                label="0-Rs250"
+                label="0-250"
                 handleChecked={handleChecked}
                 checkedMap={checkedMap}
               />
               <Filter
-                label="Rs251-Rs450"
+                label="251-450"
                 handleChecked={handleChecked}
                 checkedMap={checkedMap}
               />
               <Filter
-                label="Greater Than Rs 450"
+                label=">450"
                 handleChecked={handleChecked}
                 checkedMap={checkedMap}
               />

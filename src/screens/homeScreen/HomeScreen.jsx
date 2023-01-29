@@ -53,7 +53,7 @@ const HomeScreen = () => {
     }
     if (existItem) {
       // console.log('Exists');
-      setState({ ...snackState, open: true, message: 'Item Already Added' });
+      setState({ ...snackState, open: true, message: 'Item added' });
     } else
       setState({
         ...snackState,
@@ -94,8 +94,8 @@ const HomeScreen = () => {
         {/* Products */}
         <FilterBox handleChecked={handleChecked} selected={selected} />
 
-        <Box flex={6} sx={{ pl: 4 }}>
-          <Box sx={{ ml: 2 }}>
+        <Box flex={6}>
+          <Box>
             <Grid container spacing={4}>
               {products
                 .filterMethod(selected, products)

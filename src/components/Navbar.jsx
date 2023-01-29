@@ -18,7 +18,7 @@ const StyledToolbar = styled(Toolbar)({
 });
 
 const Navbar = () => {
-  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { state } = useContext(Store);
   const { cart } = state;
   return (
     <Box sx={{ overflow: 'auto' }}>
@@ -43,15 +43,6 @@ const Navbar = () => {
             </Box>
           </NavLink>
           <Stack direction="row">
-            <Box>
-              {/* <Tabs
-                // value={value}
-                // onChange={handleChange}
-                aria-label="basic tabs example"
-              >
-                <Tab label="Products" />
-              </Tabs> */}
-            </Box>
             <NavLink
               to="/cart"
               style={{ textDecoration: 'none', color: 'unset' }}

@@ -3,9 +3,6 @@ import React from 'react';
 import {
   Box,
   Grid,
-  CardActions,
-  CardMedia,
-  CardContent,
   Typography,
   Button,
   styled,
