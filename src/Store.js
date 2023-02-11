@@ -19,10 +19,7 @@ function reducer(state, action) {
       return { ...state, products: action.payload, loading: false };
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload };
-    case 'Search':
-      return { loading: false, products: action.payload };
     case 'CART_ADD_ITEM':
-      // add to cart
       const newItem = action.payload;
       const existItem = state.cart.cartItems.find(
         (item) => item.id === newItem.id

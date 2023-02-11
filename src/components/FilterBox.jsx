@@ -19,17 +19,7 @@ const Filterbox = styled(Box)(({ theme }) => ({
 const FilterBox = ({ handleChecked, selected, checkedMap }) => {
   return (
     <>
-      <Filterbox
-        flex={2}
-        sx={{
-          width: {
-            // lg: 500,
-            // md: 300,
-            // sm: 300,
-            // xs: 200,
-          },
-        }}
-      >
+      <Filterbox flex={2}>
         <Paper elevation={6}>
           <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
             <FormLabel component="legend" sx={{ fontSize: 15, mt: 1 }}>

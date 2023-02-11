@@ -19,8 +19,7 @@ const FlexBox = styled(Box)`
 const ProductCard = ({ product, addToCartHandler, loading }) => {
   return (
     <>
-      {' '}
-      <Grid item xs={12} sm={6} md={4} /*sx={{ height: 250 }}*/>
+      <Grid item xs={12} sm={6} md={4}>
         {loading ? (
           <Skeleton variant="rectangular" height="200px" />
         ) : (
@@ -34,12 +33,6 @@ const ProductCard = ({ product, addToCartHandler, loading }) => {
               <b> {product.name}</b>
             </Typography>
 
-            {/* <CardMedia
-            component="img"
-            image={product.imageURL}
-            height="120"
-            alt={product.name}
-          /> */}
             <Box sx={{ display: 'flex', allignItems: 'center' }}>
               <img
                 src={product.imageURL}

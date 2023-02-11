@@ -1,17 +1,10 @@
-import { React, useContext, useEffect, useState } from 'react';
+import { React, useContext, useState } from 'react';
 import { Store } from '../../Store';
 import {
   Box,
   Typography,
-  Stack,
   styled,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
   Button,
-  Card,
-  CardContent,
   Grid,
   Paper,
   IconButton,
@@ -24,7 +17,6 @@ import RemoveIcon from '@mui/icons-material/Remove';
 
 const Image = styled('img')({
   width: '10%',
-  // padding: '40 ',
 });
 const FlexBox = styled(Box)`
   display: flex;
@@ -33,7 +25,6 @@ const FlexBox = styled(Box)`
 `;
 
 const CartScreen = () => {
-  const [select, setSelect] = useState([]);
   const [snackState, setState] = useState({
     open: false,
     vertical: 'bottom',
@@ -55,7 +46,6 @@ const CartScreen = () => {
     const quant = existItem ? existItem.quant + 1 : 1;
     const data = item;
     if (data.quantity < quant) {
-      // window.alert('Sorry. Product is out of stock');
       setState({ ...snackState, open: true, message: 'Out Of Stock' });
       return;
     }
@@ -72,7 +62,6 @@ const CartScreen = () => {
     ctxDispatch({
       type: 'CART_ADD_ITEM',
       payload: { ...item, quant },
-      // payload: { ...item },
     });
   };
 
@@ -82,7 +71,6 @@ const CartScreen = () => {
         <Typography variant="h6" sx={{ p: 2 }}>
           <b>Shopping Cart</b>
         </Typography>
-        {/* {console.log(select)} */}
       </Box>
       <Grid Container>
         {cartItems.map((item) => (

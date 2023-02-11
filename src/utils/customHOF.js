@@ -14,7 +14,6 @@ export default Array.prototype.filterMethod = function (selected, products) {
         return prod;
     })
     .filter((prod) => {
-      // console.log(prod);
       if (selected.includes(prod.gender)) {
         console.log('gender', prod.gender);
         return prod;
@@ -38,9 +37,7 @@ export default Array.prototype.filterMethod = function (selected, products) {
         return prod;
     })
     .filter((prod) => {
-      // console.log(prod);
       if (selected.includes(prod.type)) {
-        // console.log('gender', prod.gender);
         return prod;
       } else if (
         !(

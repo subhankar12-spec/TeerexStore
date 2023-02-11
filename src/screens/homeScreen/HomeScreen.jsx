@@ -8,6 +8,7 @@ import ProductCard from '../../components/ProductCard';
 import FilterBox from '../../components/FilterBox';
 import SearchBar from '../../components/SearchBar';
 import customHOF from '../../utils/customHOF';
+import AlertComponent from '../../components/AlertComponent';
 
 const HomeScreen = () => {
   let [query, setQuery] = useState([]);
@@ -24,6 +25,7 @@ const HomeScreen = () => {
   const {
     loading,
     products,
+    error,
     cart: { cartItems },
   } = state;
 
@@ -39,7 +41,6 @@ const HomeScreen = () => {
     }
   };
 
-  // const results = search.length ? [...search] : products;
   const addToCartHandler = async (item) => {
     const existItem = cartItems.find((x) => x.id === item.id);
 
@@ -47,12 +48,10 @@ const HomeScreen = () => {
 
     const data = item;
     if (data.quantity < quant) {
-      // window.alert('Sorry. Product is out of stock');
       setState({ ...snackState, open: true, message: 'Out Of Stock' });
       return;
     }
     if (existItem) {
-      // console.log('Exists');
       setState({ ...snackState, open: true, message: 'Item added' });
     } else
       setState({
@@ -91,32 +90,40 @@ const HomeScreen = () => {
       />
 
       <Stack direction="row" sx={{ m: 2, p: 2 }} gap={5}>
-        {/* Products */}
         <FilterBox handleChecked={handleChecked} selected={selected} />
-
-        <Box flex={6}>
-          <Box>
-            <Grid container spacing={4}>
-              {products
-                .filterMethod(selected, products)
-                .filter(
-                  (asd) =>
-                    asd.name.toLowerCase().includes(query) ||
-                    asd.color.toLowerCase().includes(query) ||
-                    asd.type.toLowerCase().includes(query)
-                )
-                // .filterMethod(selected, products)
-                .map((product, key) => (
-                  <ProductCard
-                    product={product}
-                    addToCartHandler={() => addToCartHandler(product)}
-                    loading={loading}
-                    key={key}
-                  />
-                ))}
-            </Grid>
+        {error ? (
+          <AlertComponent
+            vertical={vertical}
+            horizontal={horizontal}
+            open={open}
+            message={message}
+            setState={setState}
+            snackState={snackState}
+          />
+        ) : (
+          <Box flex={6}>
+            <Box>
+              <Grid container spacing={4}>
+                {products
+                  .filterMethod(selected, products)
+                  .filter(
+                    (asd) =>
+                      asd.name.toLowerCase().includes(query) ||
+                      asd.color.toLowerCase().includes(query) ||
+                      asd.type.toLowerCase().includes(query)
+                  )
+                  .map((product, key) => (
+                    <ProductCard
+                      product={product}
+                      addToCartHandler={() => addToCartHandler(product)}
+                      loading={loading}
+                      key={key}
+                    />
+                  ))}
+              </Grid>
+            </Box>
           </Box>
-        </Box>
+        )}
         {message != 'Out Of Stock' ? (
           <Snackbar
             anchorOrigin={{ vertical, horizontal }}
@@ -127,22 +134,14 @@ const HomeScreen = () => {
             onClose={() => setState({ ...snackState, open: false })}
           />
         ) : (
-          <Snackbar
-            anchorOrigin={{ vertical, horizontal }}
+          <AlertComponent
+            vertical={vertical}
+            horizontal={horizontal}
             open={open}
             message={message}
-            autoHideDuration={1000}
-            key={vertical + horizontal}
-            onClose={() => setState({ ...snackState, open: false })}
-          >
-            <Alert
-              onClose={() => setState({ ...snackState, open: false })}
-              severity="error"
-              sx={{ width: '100%' }}
-            >
-              {message}
-            </Alert>
-          </Snackbar>
+            setState={setState}
+            snackState={snackState}
+          />
         )}
       </Stack>
     </Container>

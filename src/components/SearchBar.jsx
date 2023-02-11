@@ -1,15 +1,17 @@
 import { React, useState } from 'react';
 import {
   Box,
-  TextField,
   IconButton,
   styled,
   Drawer,
   FormControl,
   FormGroup,
   FormLabel,
+  Paper,
+  InputBase,
 } from '@mui/material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import CloseIcon from '@mui/icons-material/Close';
 
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -22,7 +24,7 @@ const Filtercustom = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-const SearchBar = ({ setQuery, selected, handleChecked, checkedMap }) => {
+const SearchBar = ({ setQuery, handleChecked, checkedMap }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -30,6 +32,10 @@ const SearchBar = ({ setQuery, selected, handleChecked, checkedMap }) => {
   const [value, setValue] = useState('');
   const onValueChange = (e) => {
     setValue(e.target.value);
+  };
+  const close = () => {
+    setQuery('');
+    setValue('');
   };
 
   return (
@@ -40,9 +46,8 @@ const SearchBar = ({ setQuery, selected, handleChecked, checkedMap }) => {
         mt: 4,
       }}
     >
-      <TextField
-        id="standard-basic"
-        label="Search for products..."
+      <Paper
+        elevation={3}
         sx={{
           width: {
             lg: 800,
@@ -50,11 +55,26 @@ const SearchBar = ({ setQuery, selected, handleChecked, checkedMap }) => {
             sm: 400,
             xs: 300,
           },
+          height: 50,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
           ml: 3,
         }}
-        onChange={(e) => onValueChange(e)}
-      />
-
+      >
+        <InputBase
+          // id="standard-basic"
+          placeholder="Search for products..."
+          sx={{ ml: 2, width: '80%' }}
+          value={value}
+          onChange={(e) => onValueChange(e)}
+        ></InputBase>
+        {value != '' && (
+          <IconButton onClick={close}>
+            <CloseIcon />
+          </IconButton>
+        )}
+      </Paper>
       <IconButton onClick={() => setQuery(value.toLowerCase())}>
         <SearchIcon />
       </IconButton>

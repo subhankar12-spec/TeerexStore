@@ -5,7 +5,6 @@ import HomeScreen from './screens/homeScreen/HomeScreen';
 import CartScreen from './screens/cartScreen/CartScreen';
 import Navbar from './components/Navbar';
 import { theme } from './theme';
-// import Home from './components/Home';
 
 function App() {
   return (
